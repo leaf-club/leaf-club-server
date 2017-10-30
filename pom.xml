@@ -224,6 +224,7 @@
           <include>**/*.xml</include>
           <include>**/*.properties</include>
         </includes>
+        <filtering>false</filtering>
       </resource>
       <resource>
         <directory>src/main/java</directory>
