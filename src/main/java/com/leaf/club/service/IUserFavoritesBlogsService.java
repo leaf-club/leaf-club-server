@@ -1,14 +1,14 @@
-package com.leaf.club.dao;
+package com.leaf.club.service;
 
 import com.leaf.club.model.UserFavoritesBlogs;
 
 /**
  * @author LL
  */
-public interface IUserFavoritesBlogsDao {
+public interface IUserFavoritesBlogsService {
 
     /**
-     * 根据id查询用户最喜爱的博文
+     * 根据id获取用户最喜爱的博文
      * @param id
      * @return
      */

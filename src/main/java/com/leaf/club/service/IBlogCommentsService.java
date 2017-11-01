@@ -1,14 +1,14 @@
-package com.leaf.club.dao;
+package com.leaf.club.service;
 
 import com.leaf.club.model.BlogComments;
 
 /**
  * @author LL
  */
-public interface IBlogCommentsDao {
+public interface IBlogCommentsService {
 
     /**
-     * 根据id查询博文评论
+     * 根据id获取博文评论
      * @param id
      * @return
      */

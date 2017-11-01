@@ -1,14 +1,14 @@
-package com.leaf.club.dao;
+package com.leaf.club.service;
 
 import com.leaf.club.model.UserFavoritesWorks;
 
 /**
  * @author LL
  */
-public interface IUserFavoritesWorksDao {
+public interface IUserFavoritesWorksService {
 
     /**
-     * 根据id查询用户最喜爱的作品
+     * 根据id获取用户最喜爱的作品
      * @param id
      * @return
      */

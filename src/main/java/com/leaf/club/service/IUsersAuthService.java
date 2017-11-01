@@ -1,14 +1,14 @@
-package com.leaf.club.dao;
+package com.leaf.club.service;
 
 import com.leaf.club.model.UsersAuth;
 
 /**
  * @author LL
  */
-public interface IUsersAuthDao {
+public interface IUsersAuthService {
 
     /**
-     * 根据id查询用户授权
+     * 根据id获取用户授权
      * @param id
      * @return
      */

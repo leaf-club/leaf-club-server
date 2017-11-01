@@ -1,14 +1,14 @@
-package com.leaf.club.dao;
+package com.leaf.club.service;
 
 import com.leaf.club.model.Works;
 
 /**
  * @author LL
  */
-public interface IWorksDao {
+public interface IWorksService {
 
     /**
-     * 根据id查询作品
+     * 根据id获取作品
      * @param id
      * @return
      */

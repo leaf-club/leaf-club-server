@@ -1,14 +1,14 @@
-package com.leaf.club.dao;
+package com.leaf.club.service;
 
 import com.leaf.club.model.Blogs;
 
 /**
  * @author LL
  */
-public interface IBlogsDao {
+public interface IBlogsService {
 
     /**
-     * 根据id查询博文
+     * 根据id获取博文
      * @param id
      * @return
      */

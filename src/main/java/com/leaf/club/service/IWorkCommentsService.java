@@ -1,14 +1,14 @@
-package com.leaf.club.dao;
+package com.leaf.club.service;
 
 import com.leaf.club.model.WorkComments;
 
 /**
  * @author LL
  */
-public interface IWorkCommentsDao {
+public interface IWorkCommentsService {
 
     /**
-     * 根据id查询作品评论
+     * 根据id获取作品评论
      * @param id
      * @return
      */
