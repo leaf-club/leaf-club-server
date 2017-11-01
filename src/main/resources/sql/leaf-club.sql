@@ -12,7 +12,7 @@ CREATE TABLE `users` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
     `user_name` VARCHAR(63) NOT NULL unique COMMENT '用户名，值唯一',
     `user_registered_time` BIGINT(20) DEFAULT NULL COMMENT '用户注册时间',
-    `user_img` LONGBLOB DEFAULT NULL COMMENT '用户头像',
+    `user_img` VARCHAR(10230) DEFAULT NULL COMMENT '用户头像',
     `user_email` VARCHAR(63) DEFAULT NULL COMMENT '用户邮箱',
     `user_phone` VARCHAR(15) DEFAULT NULL COMMENT '用户手机号',
     `user_age` INT(2) DEFAULT NULL COMMENT '用户年龄',

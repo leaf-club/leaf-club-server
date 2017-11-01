@@ -2,5 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.leaf.club.dao.IUserDao">
+    <resultMap id="BaseResultMap" type="com.leaf.club.model.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="user_registered_time" jdbcType="BIGINT" property="registeredTime"/>
+        <result column="user_img" jdbcType="VARCHAR" property="userImg"/>
+        <result column="user_email" jdbcType="VARCHAR" property="userEmail"/>
+        <result column="user_phone" jdbcType="VARCHAR" property="userPhone"/>
+        <result column="user_age" jdbcType="INTEGER" property="userAge"/>
+        <result column="user_sex" jdbcType="INTEGER" property="userSex"/>
+        <result column="user_status" jdbcType="INTEGER" property="userStatus"/>
+        <result column="user_nickname" jdbcType="VARCHAR" property="userNickName"/>
+        <result column="user_address" jdbcType="VARCHAR" property="userAddress"/>
+        <result column="user_ip" jdbcType="VARCHAR" property="userIp"/>
+        <result column="extra" jdbcType="VARCHAR" property="extra"/>
+    </resultMap>
+
+    <sql id="BaseColumns">
+        id, user_name, user_registered_time, user_img, user_email, user_phone,
+        user_age, user_sex, user_status, user_nickname, user_address, user_ip,
+        extra
+    </sql>
+
+    <select id="getUserById" parameterType="int" resultMap="BaseResultMap">
+        SELECT
+          <include refid="BaseColumns"/>
+        FROM USERS
+        WHERE id=#{id}
+    </select>
 
 </mapper>
