@@ -7,7 +7,7 @@ public class User {
     private int id;
     private long registeredTime;
     private String userName;
-    private byte[] userImg;
+    private String userImg;
     private String userEmail;
     private String userPhone;
     private int userAge;
@@ -42,11 +42,11 @@ public class User {
         this.userName = userName;
     }
 
-    public byte[] getUserImg() {
+    public String getUserImg() {
         return userImg;
     }
 
-    public void setUserImg(byte[] userImg) {
+    public void setUserImg(String userImg) {
         this.userImg = userImg;
     }
 
