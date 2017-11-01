@@ -16,6 +16,7 @@ public class User {
     private String userNickName;
     private String userAddress;
     private String userIp;
+    private String extra;
 
     public int getId() {
         return id;
@@ -111,5 +112,13 @@ public class User {
 
     public void setUserIp(String userIp) {
         this.userIp = userIp;
+    }
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
     }
 }

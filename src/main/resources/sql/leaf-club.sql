@@ -21,8 +21,9 @@ CREATE TABLE `users` (
     `user_nickname` VARCHAR(63) NOT NULL COMMENT '用户昵称，默认为用户名',
     `user_address` VARCHAR(200) DEFAULT NULL COMMENT '用户地址',
     `user_ip` VARCHAR(50) DEFAULT NULL COMMENT '用户的url',
+    `extra` VARCHAR(255) DEFAULT NULL COMMENT '保留字段',
     PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --创建用户授权表users_auth
 DROP TABLE IF EXISTS `users_auth`;
@@ -34,9 +35,10 @@ CREATE TABLE `users_auth` (
     `expires_in` INT(10) DEFAULT '0' COMMENT 'token过期时间',
     `openid` VARCHAR(255) DEFAULT NULL,
     `scope` VARCHAR(255) DEFAULT NULL,
+    `extra` VARCHAR(255) DEFAULT NULL COMMENT '保留字段',
     PRIMARY KEY (`id`),
     FOREIGN KEY (`user_id`) REFERENCES users (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --创建博文表blogs
 DROP TABLE IF EXISTS `blogs`;
@@ -45,11 +47,11 @@ CREATE TABLE `blogs` (
     `blog_author_id` INT(10) NOT NULL COMMENT '关联用户表users的id',
     `blog_create_time` BIGINT(20) NOT NULL COMMENT '用户创建博文时间',
     `blog_title` VARCHAR(255) NOT NULL COMMENT '博文标题',
-    `blog_excerpt` VARCHAR(1023) DEFAULT NULL COMMENT '博文摘要',
-    `blog_content` TEXT DEFAULT NULL COMMENT '博文内容',
+    `blog_excerpt` TEXT DEFAULT NULL COMMENT '博文摘要',
+    `blog_content` MEDIUMTEXT DEFAULT NULL COMMENT '博文内容',
     `blog_content_binary` LONGBLOB DEFAULT NULL COMMENT '博文内容,存为二进制',
-    `blog_draft` TEXT DEFAULT NULL COMMENT '博文草稿',
-    `blog_draft_binary` LONGBLOB DEFAULT NULL COMMENT '博文草稿，存为二进制',
+    `blog_source` MEDIUMTEXT DEFAULT NULL COMMENT '博文源码',
+    `blog_source_binary` LONGBLOB DEFAULT NULL COMMENT '博文源码，存为二进制',
     `blog_file_url` VARCHAR(255) DEFAULT NULL COMMENT '博客存放在文件系统对应的url',
     `blog_type` INT(2) NOT NULL COMMENT '博文对应的类型',
     `blog_type_name` VARCHAR(31) NOT NULL COMMENT '博文所对应类型的名称，如类型0对应前端，类型1对应后端',
@@ -61,9 +63,10 @@ CREATE TABLE `blogs` (
     `blog_favorites_count` INT(10) DEFAULT '0' COMMENT '博文收藏数',
     `blog_read_count` INT(10) DEFAULT '0' COMMENT '博文的阅读数',
     `blog_update_time` BIGINT DEFAULT NULL COMMENT '博文的更新时间',
+    `extra` VARCHAR(255) DEFAULT NULL COMMENT '保留字段',
     PRIMARY KEY (`id`),
     FOREIGN KEY (`blog_author_id`) REFERENCES users (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --创建博客评论表blog_comments
 DROP TABLE IF EXISTS `blog_comments`;
@@ -74,10 +77,11 @@ CREATE TABLE `blog_comments` (
     `comment_time` BIGINT NOT NULL COMMENT '评论时间',
     `comment_praise_count` INT(10) DEFAULT '0' COMMENT '评论点赞数',
     `comment_content` VARCHAR(2047) NOT NULL COMMENT '评论的内容',
+    `extra` VARCHAR(255) DEFAULT NULL COMMENT '保留字段',
     PRIMARY KEY (`id`),
     FOREIGN KEY (`comment_blog_id`) REFERENCES blogs (`id`),
     FOREIGN KEY (`comment_user_id`) REFERENCES blogs (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --评论回复表
 DROP TABLE IF EXISTS `blog_replies`;
@@ -89,11 +93,12 @@ CREATE TABLE `blog_replies` (
     `reply_praise_count` INT(10) DEFAULT '0' COMMENT '回复点赞数',
     `reply_content` VARCHAR(2047) NOT NULL COMMENT '回复的内容',
     `reply_time` BIGINT NOT NULL COMMENT '回复的时间',
+    `extra` VARCHAR(255) DEFAULT NULL COMMENT '保留字段',
     PRIMARY KEY (`id`),
     FOREIGN KEY (`reply_comment_id`) REFERENCES blog_comments (`id`),
     FOREIGN KEY (`reply_user_id`) REFERENCES users (`id`),
     FOREIGN KEY (`replied_user_id`) REFERENCES users (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --创建作品表works
 DROP TABLE IF EXISTS `works`;
@@ -113,9 +118,10 @@ CREATE TABLE `works` (
     `work_favorite_count` INT(10) DEFAULT '0' COMMENT '作品的收藏数',
     `work_read_count` INT(10) DEFAULT '0' COMMENT '作品的阅读量',
     `work_update_time` BIGINT DEFAULT NULL COMMENT '作品的更新时间',
+    `extra` VARCHAR(255) DEFAULT NULL COMMENT '保留字段',
     PRIMARY KEY (`id`),
     FOREIGN KEY (`work_author_id`) REFERENCES users (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --创建作品评论表work_comments
 DROP TABLE IF EXISTS `work_comments`;
@@ -126,10 +132,11 @@ CREATE TABLE `work_comments` (
     `comment_time` BIGINT NOT NULL COMMENT '评论的时间',
     `comment_praise_count` INT(10) DEFAULT '0' COMMENT '评论点赞数',
     `comment_content` VARCHAR(2047) NOT NULL COMMENT '评论的内容',
+    `extra` VARCHAR(255) DEFAULT NULL COMMENT '保留字段',
     PRIMARY KEY (`id`),
     FOREIGN KEY (`comment_work_id`) REFERENCES works (`id`),
     FOREIGN KEY (`comment_user_id`) REFERENCES users (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --创建作品评论回复表work_replies
 DROP TABLE IF EXISTS `work_replies`;
@@ -141,11 +148,12 @@ CREATE TABLE `work_replies` (
     `reply_praise_count` INT(10) DEFAULT '0' COMMENT '回复点赞数',
     `reply_content` VARCHAR(2047) NOT NULL COMMENT '回复的内容',
     `reply_time` BIGINT NOT NULL COMMENT '回复的时间',
+    `extra` VARCHAR(255) DEFAULT NULL COMMENT '保留字段',
     PRIMARY KEY (`id`),
     FOREIGN KEY (`reply_comment_id`) REFERENCES work_comments (`id`),
     FOREIGN KEY (`reply_user_id`) REFERENCES users (`id`),
     FOREIGN KEY (`replied_user_id`) REFERENCES users (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --创建用户收藏博文表user_favorites_blogs
 DROP TABLE IF EXISTS `user_favorites_blogs`;
@@ -153,10 +161,11 @@ CREATE TABLE `user_favorites_blogs` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
     `user_id` INT(10) NOT NULL COMMENT '关联用户表users的id',
     `favorite_blog_id` INT(10) NOT NULL COMMENT '关联blogs表的id',
+    `extra` VARCHAR(255) DEFAULT NULL COMMENT '保留字段',
     PRIMARY KEY (`id`),
     FOREIGN KEY (`user_id`) REFERENCES users (`id`),
     FOREIGN KEY (`favorite_blog_id`) REFERENCES blogs (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --创建用户收藏作品表user_favorites_works
 DROP TABLE IF EXISTS `user_favorites_works`;
@@ -164,10 +173,11 @@ CREATE TABLE `user_favorites_works` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
     `user_id` INT(10) NOT NULL COMMENT '关联用户表users的id',
     `favorite_work_id` INT(10) NOT NULL COMMENT '关联works表的id',
+    `extra` VARCHAR(255) DEFAULT NULL COMMENT '保留字段',
     PRIMARY KEY (`id`),
     FOREIGN KEY (`user_id`) REFERENCES users (`id`),
     FOREIGN KEY (`favorite_work_id`) REFERENCES works (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --首页展示表index_show
 DROP TABLE IF EXISTS `index_show`;
@@ -175,8 +185,9 @@ CREATE TABLE `index_show` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
     `columns` VARCHAR(15) NOT NULL COMMENT '首页展示的栏目',
     `content` TEXT DEFAULT NULL COMMENT '首页的推荐博文或作品',
+    `extra` VARCHAR(255) DEFAULT NULL COMMENT '保留字段',
     PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 SET FOREIGN_KEY_CHECKS=1;
