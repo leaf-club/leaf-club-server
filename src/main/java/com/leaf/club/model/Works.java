@@ -4,7 +4,7 @@ package com.leaf.club.model;
  * @author LL
  */
 
-public class Work {
+public class Works {
     private int id;
     private long workCreateTime;
     private String workUrl;
@@ -18,7 +18,8 @@ public class Work {
     private int workPraiseCount;
     private int workFavoriteCount;
     private int workReadCount;
-    private long workUpdataTime;
+    private long workUpdateTime;
+    private String extra;
 
     public int getId() {
         return id;
@@ -124,11 +125,19 @@ public class Work {
         this.workReadCount = workReadCount;
     }
 
-    public long getWorkUpdataTime() {
-        return workUpdataTime;
+    public long getWorkUpdateTime() {
+        return workUpdateTime;
     }
 
-    public void setWorkUpdataTime(long workUpdataTime) {
-        this.id = workUpdataTime;
+    public void setWorkUpdateTime(long workUpdateTime) {
+        this.workUpdateTime = workUpdateTime;
+    }
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
     }
 }

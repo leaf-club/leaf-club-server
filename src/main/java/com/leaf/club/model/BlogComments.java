@@ -10,6 +10,7 @@ public class BlogComments {
     private long commentTime;
     private int commentPraiseCount;
     private String commentContent;
+    private String extra;
 
     public int getId() {
         return id;
@@ -57,5 +58,13 @@ public class BlogComments {
 
     public void setCommentContent(String commentContent) {
         this.commentContent = commentContent;
+    }
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
     }
 }

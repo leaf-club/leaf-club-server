@@ -1,16 +1,16 @@
 package com.leaf.club.dao;
 
-import com.leaf.club.model.BlogComments;
+import com.leaf.club.model.Blogs;
 
 /**
  * @author LL
  */
-public interface IBlogCommentsDao {
+public interface IBlogsDao {
 
     /**
      * 根据id查询用户
      * @param id
      * @return
      */
-    BlogComments getBlogCommentsById(int id);
+    Blogs getBlogsById(int id);
 }

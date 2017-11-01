@@ -3,13 +3,14 @@ package com.leaf.club.model;
 /**
  * @author LL
  */
-public class BlogComments {
+public class WorkComments {
     private int id;
-    private int commentBlogId;
+    private int commentWorkId;
     private int commentUserId;
     private long commentTime;
     private int commentPraiseCount;
     private String commentContent;
+    private String extra;
 
     public int getId() {
         return id;
@@ -19,12 +20,12 @@ public class BlogComments {
         this.id = id;
     }
 
-    public int getCommentBlogId() {
-        return commentBlogId;
+    public int getCommentWorkId() {
+        return commentWorkId;
     }
 
-    public void setCommentBlogId(int commentBlogId) {
-        this.commentBlogId = commentBlogId;
+    public void setCommentWorkId(int commentWorkId) {
+        this.commentWorkId = commentWorkId;
     }
 
     public int getCommentUserId() {
@@ -57,5 +58,13 @@ public class BlogComments {
 
     public void setCommentContent(String commentContent) {
         this.commentContent = commentContent;
+    }
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
     }
 }

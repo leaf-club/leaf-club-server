@@ -11,6 +11,7 @@ public class BlogReplies {
     private int replyPraiseCount;
     private String replyContent;
     private long replyTime;
+    private String extra;
 
     public int getId() {
         return id;
@@ -60,11 +61,19 @@ public class BlogReplies {
         this.replyContent = replyContent;
     }
 
-    public long getCommentTime() {
-        return commentTime;
+    public long getReplyTime() {
+        return replyTime;
     }
 
-    public void setCommentTime(long commentTime) {
-        this.commentTime = commentTime;
+    public void setReplyTime(long replyTime) {
+        this.replyTime = replyTime;
+    }
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
     }
 }

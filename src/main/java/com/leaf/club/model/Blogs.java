@@ -3,7 +3,7 @@ package com.leaf.club.model;
 /**
  * @author LL
  */
-public class Blog {
+public class Blogs {
     private int id;
     private int blogAuthorId;
     private long blogCreateTime;
@@ -24,6 +24,7 @@ public class Blog {
     private int blogFavoritesCount;
     private int blogReadCount;
     private long blogUpdateTime;
+    private String extra;
 
 
     public int getId() {
@@ -184,6 +185,14 @@ public class Blog {
 
     public void setBlogUpdateTime(long blogUpdateTime) {
         this.blogUpdateTime = blogUpdateTime;
+    }
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
     }
 
 }

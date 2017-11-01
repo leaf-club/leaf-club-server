@@ -3,13 +3,15 @@ package com.leaf.club.model;
 /**
  * @author LL
  */
-public class BlogComments {
+public class WorkReplies {
     private int id;
-    private int commentBlogId;
-    private int commentUserId;
-    private long commentTime;
-    private int commentPraiseCount;
-    private String commentContent;
+    private int replyCommentId;
+    private int replyUserId;
+    private int repliedUserId;
+    private int replyPraiseCount;
+    private String replyContent;
+    private long replyTime;
+    private String extra;
 
     public int getId() {
         return id;
@@ -19,43 +21,59 @@ public class BlogComments {
         this.id = id;
     }
 
-    public int getCommentBlogId() {
-        return commentBlogId;
+    public int getReplyCommentId() {
+        return replyCommentId;
     }
 
-    public void setCommentBlogId(int commentBlogId) {
-        this.commentBlogId = commentBlogId;
+    public void setReplyCommentId(int replyCommentId) {
+        this.replyCommentId = replyCommentId;
     }
 
-    public int getCommentUserId() {
-        return commentUserId;
+    public int getReplyUserId() {
+        return replyUserId;
     }
 
-    public void setCommentUserId(int commentUserId) {
-        this.commentUserId = commentUserId;
+    public void setReplyUserId(int replyUserId) {
+        this.replyUserId = replyUserId;
     }
 
-    public long getCommentTime() {
-        return commentTime;
+    public int getRepliedUserId() {
+        return repliedUserId;
     }
 
-    public void setCommentTime(long commentTime) {
-        this.commentTime = commentTime;
+    public void setRepliedUserId(int repliedUserId) {
+        this.repliedUserId = repliedUserId;
     }
 
-    public int getCommentPraiseCount() {
-        return commentPraiseCount;
+    public int getReplyPraiseCount() {
+        return replyPraiseCount;
     }
 
-    public void setCommentPraiseCount(int commentPraiseCount) {
-        this.commentPraiseCount = commentPraiseCount;
+    public void setReplyPraiseCount(int replyPraiseCount) {
+        this.replyPraiseCount = replyPraiseCount;
     }
 
-    public String getCommentContent() {
-        return commentContent;
+    public String getReplyContent() {
+        return replyContent;
     }
 
-    public void setCommentContent(String commentContent) {
-        this.commentContent = commentContent;
+    public void setReplyContent(String replyContent) {
+        this.replyContent = replyContent;
+    }
+
+    public long getReplyTime() {
+        return replyTime;
+    }
+
+    public void setReplyTime(long replyTime) {
+        this.replyTime = replyTime;
+    }
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
     }
 }

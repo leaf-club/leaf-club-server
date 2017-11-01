@@ -3,13 +3,15 @@ package com.leaf.club.model;
 /**
  * @author LL
  */
-public class BlogComments {
+public class UsersAuth {
     private int id;
-    private int commentBlogId;
-    private int commentUserId;
-    private long commentTime;
-    private int commentPraiseCount;
-    private String commentContent;
+    private int userId;
+    private String identityType;
+    private String accessToken;
+    private int expiresIn;
+    private String openId;
+    private String scope;
+    private String extra;
 
     public int getId() {
         return id;
@@ -19,43 +21,59 @@ public class BlogComments {
         this.id = id;
     }
 
-    public int getCommentBlogId() {
-        return commentBlogId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setCommentBlogId(int commentBlogId) {
-        this.commentBlogId = commentBlogId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public int getCommentUserId() {
-        return commentUserId;
+    public String getIdentityType() {
+        return identityType;
     }
 
-    public void setCommentUserId(int commentUserId) {
-        this.commentUserId = commentUserId;
+    public void setIdentityType(String identityType) {
+        this.identityType = identityType;
     }
 
-    public long getCommentTime() {
-        return commentTime;
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    public void setCommentTime(long commentTime) {
-        this.commentTime = commentTime;
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
-    public int getCommentPraiseCount() {
-        return commentPraiseCount;
+    public int getExpiresIn() {
+        return expiresIn;
     }
 
-    public void setCommentPraiseCount(int commentPraiseCount) {
-        this.commentPraiseCount = commentPraiseCount;
+    public void setExpiresIn(int expiresIn) {
+        this.expiresIn = expiresIn;
     }
 
-    public String getCommentContent() {
-        return commentContent;
+    public String getOpenId() {
+        return openId;
     }
 
-    public void setCommentContent(String commentContent) {
-        this.commentContent = commentContent;
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
+
+    public String getScope() {
+        return scope;
+    }
+
+    public void setScope(String scope) {
+        this.scope = scope;
+    }
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
     }
 }
