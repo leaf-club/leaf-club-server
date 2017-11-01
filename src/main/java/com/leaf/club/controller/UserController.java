@@ -19,6 +19,6 @@ public class UserController {
     @RequestMapping("/user")
     @ResponseBody
     public User getUserById(int id){
-        return null;
+        return userService.getUserById(id);
     }
 }
