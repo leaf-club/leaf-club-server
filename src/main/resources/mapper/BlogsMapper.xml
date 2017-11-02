@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.leaf.club.dao.IBlogsDao">
+    <resultMap id="BaseResultMap" type="com.leaf.club.model.Blogs">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="blog_author_id" jdbcType="INTEGER" property="blogAuthorId"/>
+        <result column="blog_create_time" jdbcType="BIGINT" property="blogCreateTime"/>
+        <result column="blog_title" jdbcType="VARCHAR" property="blogTile"/>
+        <result column="blog_excerpt" jdbcType="TEXT" property="blogExcerpt"/>
+        <result column="blog_content" jdbcType="MEDIUMTEXT" property="blogContent"/>
+        <result column="blog_content_binary" jdbcType="LONGBLOB" property="blogContentBinary"/>
+        <result column="blog_source" jdbcType="MEDIUMTEXT" property="blogSource"/>
+        <result column="blog_source_binary" jdbcType="LONGBLOB" property="blogSourceBinary"/>
+        <result column="blog_file_url" jdbcType="VARCHAR" property="blogFileUrl"/>
+        <result column="blog_type" jdbcType="INTEGER" property="blogType"/>
+        <result column="blog_type_name" jdbcType="VARCHAR" property="blogTypeName"/>
+        <result column="blog_tag" jdbcType="VARCHAR" property="blogTag"/>
+        <result column="blog_describe" jdbcType="VARCHAR" property="blogDescribe"/>
+        <result column="blog_status" jdbcType="TINYINT" property="blogStatus"/>
+        <result column="blog_comment_count" jdbcType="INTEGER" property="blogCommentCount"/>
+        <result column="blog_praise_count" jdbcType="INTEGER" property="blogPraiseCount"/>
+        <result column="blog_favorites_count" jdbcType="INTEGER" property="blogFavoritesCount"/>
+        <result column="blog_read_count" jdbcType="INTEGER" property="blogReadCount"/>
+        <result column="blog_update_time" jdbcType="BIGINT" property="blogUpdateTime"/>
+        <result column="extra" jdbcType="VARCHAR" property="extra"/>
+    </resultMap>
+
+    <sql id="BaseColumns">
+        id, blog_author_id, blog_create_time, blog_title, blog_excerpt, blog_content,
+        blog_content_binary, blog_source, blog_source_binary, blog_file_url, blog_type,
+        blog_type_name, blog_tag, blog_describe, blog_status, blog_comment_count, blog_praise_count,
+        blog_favorites_count, blog_read_count, blog_update_time, extra
+    </sql>
+</mapper>

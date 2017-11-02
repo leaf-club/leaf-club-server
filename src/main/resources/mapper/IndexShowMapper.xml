@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.leaf.club.dao.IIndexShowDao">
+    <resultMap id="BaseResultMap" type="com.leaf.club.model.IndexShow">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="columns" jdbcType="VARCHAR" property="columns"/>
+        <result column="content" jdbcType="TEXT" property="content"/>
+        <result column="extra" jdbcType="VARCHAR" property="extra"/>
+    </resultMap>
+
+    <sql id="BaseColumns">
+        id, columns, content, extra
+    </sql>
+</mapper>

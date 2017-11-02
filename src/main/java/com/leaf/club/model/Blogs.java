@@ -11,8 +11,8 @@ public class Blogs {
     private String blogExcerpt;
     private String blogContent;
     private byte[] blogContentBinary;
-    private String blogDraft;
-    private byte[] blogDraftBinary;
+    private String blogSource;
+    private byte[] blogSourceBinary;
     private String blogFileUrl;
     private int blogType;
     private String blogTypeName;
@@ -83,20 +83,20 @@ public class Blogs {
         this.blogContentBinary = blogContentBinary;
     }
 
-    public String getBlogDraft() {
-        return blogDraft;
+    public String getBlogSource() {
+        return blogSource;
     }
 
-    public void setBlogDraft(String blogDraft) {
-        this.blogDraft = blogDraft;
+    public void setBlogSource(String blogSource) {
+        this.blogSource = blogSource;
     }
 
-    public byte[] getBlogDraftBinary() {
-        return blogDraftBinary;
+    public byte[] getBlogSourceBinary() {
+        return blogSourceBinary;
     }
 
-    public void setBlogDraftBinary(byte[] blogDraftBinary) {
-        this.blogDraftBinary = blogDraftBinary;
+    public void setBlogSourceBinary(byte[] blogSourceBinary) {
+        this.blogSourceBinary = blogSourceBinary;
     }
 
     public String getBlogFileUrl() {
