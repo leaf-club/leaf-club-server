@@ -1,6 +1,7 @@
 package com.leaf.club.dao;
 
 import com.leaf.club.model.User;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author xiechao
@@ -12,5 +13,5 @@ public interface IUserDao {
      * @param id
      * @return
      */
-    User getUserById(int id);
+    User getUserById(@Param("id")int id);
 }
