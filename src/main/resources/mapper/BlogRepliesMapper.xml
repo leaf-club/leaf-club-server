@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.leaf.club.dao.IBlogRepliesDao">
+    <resultMap id="BaseResultMap" type="com.leaf.club.model.BlogReplies">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="reply_comment_id" jdbcType="INTEGER" property="replyCommentId"/>
+        <result column="reply_user_id" jdbcType="INTEGER" property="replyUserId"/>
+        <result column="replied_user_id" jdbcType="INTEGER" property="repliedUserId"/>
+        <result column="reply_praise_count" jdbcType="INTEGER" property="replyPraiseCount"/>
+        <result column="reply_content" jdbcType="VARCHAR" property="replyContent"/>
+        <result column="reply_time" jdbcType="BIGINT" property="replyTime"/>
+        <result column="extra" jdbcType="VARCHAR" property="extra"/>
+    </resultMap>
+
+    <sql id="BaseColumns">
+        id, reply_comment_id, reply_user_id, replied_user_id, reply_praise_count,
+        reply_content, reply_time, extra
+    </sql>
+</mapper>

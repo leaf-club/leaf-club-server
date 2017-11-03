@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.leaf.club.dao.IBlogCommentsDao">
+    <resultMap id="BaseResultMap" type="com.leaf.club.model.BlogComments">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="comment_blog_id" jdbcType="INTEGER" property="commentBlogId"/>
+        <result column="comment_user_id" jdbcType="INTEGER" property="commentUserId"/>
+        <result column="comment_time" jdbcType="BIGINT" property="commentTime"/>
+        <result column="comment_praise_count" jdbcType="INTEGER" property="commentPraiseCount"/>
+        <result column="comment_content" jdbcType="VARCHAR" property="commentContent"/>
+        <result column="extra" jdbcType="VARCHAR" property="extra"/>
+    </resultMap>
+
+    <sql id="BaseColumns">
+        id, comment_blog_id, comment_user_id, comment_time, comment_praise_count,
+        comment_content, extra
+    </sql>
+</mapper>

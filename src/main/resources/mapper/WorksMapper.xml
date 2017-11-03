@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.leaf.club.dao.IWorksDao">
+    <resultMap id="BaseResultMap" type="com.leaf.club.model.Works">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="work_author_id" jdbcType="INTEGER" property="workAuthorId"/>
+        <result column="work_create_time" jdbcType="BIGINT" property="workCreateTime"/>
+        <result column="work_url" jdbcType="VARCHAR" property="workCreateTime"/>
+        <result column="work_title" jdbcType="VARCHAR" property="workTile"/>
+        <result column="work_describe" jdbcType="VARCHAR" property="workDescribe"/>
+        <result column="work_type" jdbcType="INTEGER" property="workType"/>
+        <result column="work_type_name" jdbcType="VARCHAR" property="workTypeName"/>
+        <result column="work_tag" jdbcType="VARCHAR" property="workTag"/>
+        <result column="work_status" jdbcType="TINYINT" property="workStatus"/>
+        <result column="work_comment_count" jdbcType="INTEGER" property="workCommentCount"/>
+        <result column="work_praise_count" jdbcType="INTEGER" property="workPraiseCount"/>
+        <result column="work_favorite_count" jdbcType="INTEGER" property="workFavoritesCount"/>
+        <result column="work_read_count" jdbcType="INTEGER" property="workReadCount"/>
+        <result column="work_update_time" jdbcType="BIGINT" property="workUpdateTime"/>
+        <result column="extra" jdbcType="VARCHAR" property="extra"/>
+    </resultMap>
+
+    <sql id="BaseColumns">
+        id, work_author_id, work_create_time, work_url, work_title, work_describe, work_type,
+        work_type_name, work_tag, work_status, work_comment_count, work_praise_count,
+        work_favorite_count,work_read_count, work_update_time, extra
+    </sql>
+</mapper>
