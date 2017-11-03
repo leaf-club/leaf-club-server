@@ -107,6 +107,7 @@ CREATE TABLE `works` (
     `work_url` VARCHAR(255) NOT NULL COMMENT '作品的url',
     `work_title` VARCHAR(255) DEFAULT NULL COMMENT '作品的标题',
     `work_describe` VARCHAR(2047) DEFAULT NULL COMMENT '作品描述',
+    `thumbnail` TEXT DEFAULT  NULL COMMENT '作品缩略图',
     `work_type` INT(2) NOT NULL COMMENT '作品类型',
     `work_type_name` VARCHAR(31) NOT NULL COMMENT '作品类型对应的名称，如0对应前端，1对应后端',
     `work_tag` VARCHAR(63) DEFAULT NULL COMMENT '作品标签',
