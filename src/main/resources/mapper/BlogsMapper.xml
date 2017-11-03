@@ -7,11 +7,11 @@
         <result column="blog_author_id" jdbcType="INTEGER" property="blogAuthorId"/>
         <result column="blog_create_time" jdbcType="BIGINT" property="blogCreateTime"/>
         <result column="blog_title" jdbcType="VARCHAR" property="blogTile"/>
-        <result column="blog_excerpt" jdbcType="TEXT" property="blogExcerpt"/>
-        <result column="blog_content" jdbcType="MEDIUMTEXT" property="blogContent"/>
-        <result column="blog_content_binary" jdbcType="LONGBLOB" property="blogContentBinary"/>
-        <result column="blog_source" jdbcType="MEDIUMTEXT" property="blogSource"/>
-        <result column="blog_source_binary" jdbcType="LONGBLOB" property="blogSourceBinary"/>
+        <result column="blog_excerpt" jdbcType="VARCHAR" property="blogExcerpt"/>
+        <result column="blog_content" jdbcType="VARCHAR" property="blogContent"/>
+        <result column="blog_content_binary" jdbcType="BLOB" property="blogContentBinary"/>
+        <result column="blog_source" jdbcType="VARCHAR" property="blogSource"/>
+        <result column="blog_source_binary" jdbcType="BLOB" property="blogSourceBinary"/>
         <result column="blog_file_url" jdbcType="VARCHAR" property="blogFileUrl"/>
         <result column="blog_type" jdbcType="INTEGER" property="blogType"/>
         <result column="blog_type_name" jdbcType="VARCHAR" property="blogTypeName"/>
