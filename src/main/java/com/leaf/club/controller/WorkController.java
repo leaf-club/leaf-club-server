@@ -1,4 +1,4 @@
 package com.leaf.club.controller;
 
-public class BlogsController {
+public class WorkController {
 }

@@ -4,7 +4,7 @@ package com.leaf.club.model;
  * @author LL
  */
 
-public class Works {
+public class Work {
     private int id;
     private long workCreateTime;
     private String workUrl;

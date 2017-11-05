@@ -6,7 +6,7 @@ SET FOREIGN_KEY_CHECKS=0;#
 
 USE leafclub;
 
---创建用户表users
+-- 创建用户表users
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -25,7 +25,7 @@ CREATE TABLE `users` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---创建用户授权表users_auth
+-- 创建用户授权表users_auth
 DROP TABLE IF EXISTS `users_auth`;
 CREATE TABLE `users_auth` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -40,7 +40,7 @@ CREATE TABLE `users_auth` (
     FOREIGN KEY (`user_id`) REFERENCES users (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---创建博文表blogs
+-- 创建博文表blogs
 DROP TABLE IF EXISTS `blogs`;
 CREATE TABLE `blogs` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -66,7 +66,7 @@ CREATE TABLE `blogs` (
     FOREIGN KEY (`blog_author_id`) REFERENCES users (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---创建博客评论表blog_comments
+-- 创建博客评论表blog_comments
 DROP TABLE IF EXISTS `blog_comments`;
 CREATE TABLE `blog_comments` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -81,7 +81,7 @@ CREATE TABLE `blog_comments` (
     FOREIGN KEY (`comment_user_id`) REFERENCES blogs (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-#评论回复表
+--  评论回复表
 DROP TABLE IF EXISTS `blog_replies`;
 CREATE TABLE `blog_replies` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -98,7 +98,7 @@ CREATE TABLE `blog_replies` (
     FOREIGN KEY (`replied_user_id`) REFERENCES users (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---创建作品表works
+-- 创建作品表works
 DROP TABLE IF EXISTS `works`;
 CREATE TABLE `works` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -122,7 +122,7 @@ CREATE TABLE `works` (
     FOREIGN KEY (`work_author_id`) REFERENCES users (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---创建作品评论表work_comments
+-- 创建作品评论表work_comments
 DROP TABLE IF EXISTS `work_comments`;
 CREATE TABLE `work_comments` (
     `id` INT(10) NOT NULL AUTO_INCREMENT, 
@@ -137,7 +137,7 @@ CREATE TABLE `work_comments` (
     FOREIGN KEY (`comment_user_id`) REFERENCES users (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---创建作品评论回复表work_replies
+-- 创建作品评论回复表work_replies
 DROP TABLE IF EXISTS `work_replies`;
 CREATE TABLE `work_replies` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -154,7 +154,7 @@ CREATE TABLE `work_replies` (
     FOREIGN KEY (`replied_user_id`) REFERENCES users (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---创建用户收藏博文表user_favorites_blogs
+-- 创建用户收藏博文表user_favorites_blogs
 DROP TABLE IF EXISTS `user_favorites_blogs`;
 CREATE TABLE `user_favorites_blogs` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -166,7 +166,7 @@ CREATE TABLE `user_favorites_blogs` (
     FOREIGN KEY (`favorite_blog_id`) REFERENCES blogs (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---创建用户收藏作品表user_favorites_works
+-- 创建用户收藏作品表user_favorites_works
 DROP TABLE IF EXISTS `user_favorites_works`;
 CREATE TABLE `user_favorites_works` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -178,7 +178,7 @@ CREATE TABLE `user_favorites_works` (
     FOREIGN KEY (`favorite_work_id`) REFERENCES works (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---首页展示表index_show
+-- 首页展示表index_show
 DROP TABLE IF EXISTS `index_show`;
 CREATE TABLE `index_show` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
