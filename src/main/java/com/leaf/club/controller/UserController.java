@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author xiechao
  */
 @Controller
-public class UserController {
+public class UserController  {
 
     private static Logger log = LoggerFactory.getLogger(UserController.class);
 

@@ -1,6 +1,6 @@
 package com.leaf.club.service;
 
-import com.leaf.club.model.Works;
+import com.leaf.club.model.Work;
 
 /**
  * @author LL
@@ -12,5 +12,5 @@ public interface IWorksService {
      * @param id
      * @return
      */
-    Works getWorksById(int id);
+    Work getWorksById(int id);
 }

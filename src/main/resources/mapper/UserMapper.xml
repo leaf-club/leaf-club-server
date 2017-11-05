@@ -27,7 +27,7 @@
     <select id="getUserById" parameterType="int" resultMap="BaseResultMap">
         SELECT
           <include refid="BaseColumns"/>
-        FROM USERS
+        FROM users
         WHERE id=#{id}
     </select>
 

@@ -1,16 +1,16 @@
 package com.leaf.club.dao;
 
-import com.leaf.club.model.Works;
+import com.leaf.club.model.Work;
 
 /**
  * @author LL
  */
-public interface IWorksDao {
+public interface IWorkDao {
 
     /**
      * 根据id查询作品
      * @param id
      * @return
      */
-    Works getWorksById(int id);
+    Work getWorkById(int id);
 }

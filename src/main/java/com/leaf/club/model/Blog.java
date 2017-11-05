@@ -3,16 +3,14 @@ package com.leaf.club.model;
 /**
  * @author LL
  */
-public class Blogs {
+public class Blog {
     private int id;
     private int blogAuthorId;
     private long blogCreateTime;
-    private String blogTile;
+    private String blogTitle;
     private String blogExcerpt;
     private String blogContent;
-    private byte[] blogContentBinary;
     private String blogSource;
-    private byte[] blogSourceBinary;
     private String blogFileUrl;
     private int blogType;
     private String blogTypeName;
@@ -51,12 +49,12 @@ public class Blogs {
         this.blogCreateTime = blogCreateTime;
     }
 
-    public String getBlogTile() {
-        return blogTile;
+    public String getBlogTitle() {
+        return blogTitle;
     }
 
-    public void setBlogTile(String blogTile) {
-        this.blogTile = blogTile;
+    public void setBlogTitle(String blogTitle) {
+        this.blogTitle = blogTitle;
     }
 
     public String getBlogExcerpt() {
@@ -75,28 +73,12 @@ public class Blogs {
         this.blogContent = blogContent;
     }
 
-    public byte[] getBlogContentBinary() {
-        return blogContentBinary;
-    }
-
-    public void setBlogContentBinary(byte[] blogContentBinary) {
-        this.blogContentBinary = blogContentBinary;
-    }
-
     public String getBlogSource() {
         return blogSource;
     }
 
     public void setBlogSource(String blogSource) {
         this.blogSource = blogSource;
-    }
-
-    public byte[] getBlogSourceBinary() {
-        return blogSourceBinary;
-    }
-
-    public void setBlogSourceBinary(byte[] blogSourceBinary) {
-        this.blogSourceBinary = blogSourceBinary;
     }
 
     public String getBlogFileUrl() {
