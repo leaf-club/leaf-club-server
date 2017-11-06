@@ -21,4 +21,25 @@ public interface IBlogService {
      * @return
      */
     int saveBlog(@Param("blog") Blog blog);
+
+    /**
+     * 博文的点赞
+     * @param id
+     * @return
+     */
+    Boolean praiseBlog(int id);
+
+    /**
+     * 博文的阅读量
+     * @param id
+     * @return
+     */
+    Boolean readBlogCount(int id);
+
+    /**
+     * 获取博文的内容
+     * @param id
+     * @return
+     */
+    String getBlogSourceById(int id);
 }
