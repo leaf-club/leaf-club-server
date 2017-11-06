@@ -52,8 +52,12 @@ public class BlogController {
     @ResponseBody
     public Blog getBlogById(@PathVariable("id") int id){
         Blog blog = null;
-        blog = blogService.getBlogById(id);
-        blogService.readBlogCount(id);
+        try {
+            blog = blogService.getBlogById(id);
+            blogService.readBlogCount(id);
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
         return blog;
     }
 
@@ -61,7 +65,12 @@ public class BlogController {
     @ResponseBody
     public Map<String,Object> praiseBlog(@PathVariable("id") int id){
         Map<String,Object> result = new HashMap<>();
-        Boolean res = blogService.praiseBlog(id);
+        Boolean res = false;
+        try {
+            res = blogService.praiseBlog(id);
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
         if(res){
             result.put("code",200);
             result.put("msg","点赞成功");
@@ -75,9 +84,14 @@ public class BlogController {
     @RequestMapping(value = "/readBlog/{id}")
     @ResponseBody
     public Blog readBlog(@PathVariable("id") int id){
-        Blog blog = new Blog();
-        blog = blogService.getBlogById(id);
-        blogService.readBlogCount(id);            //可以整合成只操作一次数据库
+        Blog blog = null;
+        try {
+            blog = new Blog();
+            blog = blogService.getBlogById(id);
+            blogService.readBlogCount(id);            //可以整合成只操作一次数据库
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
         return blog;
     }
 
@@ -85,7 +99,12 @@ public class BlogController {
     @ResponseBody
     public Map<String,Object> reWriteBlog(@PathVariable("id") int id){
         Map<String,Object> result = new HashMap<>();
-        String source = blogService.getBlogSourceById(id);
+        String source = null;
+        try {
+            source = blogService.getBlogSourceById(id);
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
         if(source != null && !"".equals(source)){
             result.put("source",source);
             result.put("code",200);
