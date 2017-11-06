@@ -21,4 +21,25 @@ public interface IBlogDao {
      * @return
      */
     int saveBlog( Blog blog);
+
+    /**
+     * 博文点赞
+     * @param id
+     * @return
+     */
+    int praiseBlog(int id);
+
+    /**
+     * 博文阅读量
+     * @param id
+     * @return
+     */
+    int readBlogCount(int id);
+
+    /**
+     * 获取文章的源码
+     * @param id
+     * @return
+     */
+    String getBlogSourceById(int id);
 }

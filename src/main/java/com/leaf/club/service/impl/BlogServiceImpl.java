@@ -42,4 +42,28 @@ public class BlogServiceImpl implements IBlogService {
         int id =  blog.getId();
         return id;
     }
+
+    @Override
+    public Boolean praiseBlog(int id){
+        int praiseResult = blogDao.praiseBlog(id);
+        if(praiseResult > 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean readBlogCount(int id){
+        int readCountResult = blogDao.readBlogCount(id);
+        if(readCountResult > 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String getBlogSourceById(int id){
+        String source = blogDao.getBlogSourceById(id);
+        return source;
+    }
 }
