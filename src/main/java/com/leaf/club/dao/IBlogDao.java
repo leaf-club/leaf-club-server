@@ -2,6 +2,9 @@ package com.leaf.club.dao;
 
 import com.leaf.club.model.Blog;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author LL
  */
@@ -37,9 +40,19 @@ public interface IBlogDao {
     int readBlogCount(int id);
 
     /**
-     * 获取文章的源码
-     * @param id
+     * 博文分页读取
+     * @param map
      * @return
      */
-    String getBlogSourceById(int id);
+    List<Map<String,Object>> readAllBlogByPage(Map<String,Object> map);
+
+    /**
+     * 博文分类读取
+     * @param map
+     * @return
+     */
+    List<Map<String,Object>> readTypeBlogByPage(Map<String,Object> map);
+
+    Map<String,Object> readBlog(int id);
+
 }

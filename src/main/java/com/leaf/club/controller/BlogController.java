@@ -1,5 +1,6 @@
 package com.leaf.club.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.leaf.club.model.Blog;
 import com.leaf.club.service.IBlogService;
 //import org.apache.taglibs.standard.lang.jstl.NullLiteral;
@@ -11,8 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author xuzhiliang
@@ -27,23 +27,27 @@ public class BlogController {
 
     @RequestMapping(value = "/save",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> saveBlog(@RequestBody Blog blog){
+    public Map<String, Object> saveBlog(@RequestBody Map<String,Object> map){
+        Blog blog = new Blog();
+        blog.setBlogAuthorId((Integer)map.get("userId"));
+        blog.setBlogContent((String)map.get("htmlCode"));
+        blog.setBlogExcerpt((String)map.get("abstract"));
+        blog.setBlogSource((String)map.get("mdCode"));
+        blog.setBlogStatus((Integer)map.get("status"));
+        blog.setBlogTag((String)map.get("tag"));
+        Map<String,Object> type = (Map)map.get("type");
+        blog.setBlogType((Integer) type.get("id"));
+        blog.setBlogTypeName((String)type.get("name"));
+        blog.setBlogTitle((String)map.get("title"));
+        blog.setBlogCreateTime(System.currentTimeMillis());
         log.info("保存文章的前台数据：",blog);
-        int id = -1;
-        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> result = new HashMap<>(4);
         try {
-            id = blogService.saveBlog(blog);
-            log.info("保存的文章的id为：",id);
-            result.put("id",id);
-            result.put("code",200);
-            result.put("msg","保存成功");
+            result = blogService.saveBlog(blog);
             return result;
         } catch (Exception e){
-            System.out.println(e);
-            log.error("保存文章出错：");
+            e.printStackTrace();
         }
-        result.put("code",500);
-        result.put("msg","保存失败");
         return result;
     }
 
@@ -55,6 +59,7 @@ public class BlogController {
         try {
             blog = blogService.getBlogById(id);
             blogService.readBlogCount(id);
+
         }catch (Exception e){
             log.error(e.getMessage());
         }
@@ -65,53 +70,50 @@ public class BlogController {
     @ResponseBody
     public Map<String,Object> praiseBlog(@PathVariable("id") int id){
         Map<String,Object> result = new HashMap<>();
-        Boolean res = false;
         try {
-            res = blogService.praiseBlog(id);
+            result = blogService.praiseBlog(id);
         }catch (Exception e){
             log.error(e.getMessage());
-        }
-        if(res){
-            result.put("code",200);
-            result.put("msg","点赞成功");
-        }else{
-            result.put("code",500);
-            result.put("code","点赞失败");
         }
         return result;
     }
 
     @RequestMapping(value = "/readBlog/{id}")
     @ResponseBody
-    public Blog readBlog(@PathVariable("id") int id){
-        Blog blog = null;
-        try {
-            blog = new Blog();
-            blog = blogService.getBlogById(id);
-            blogService.readBlogCount(id);            //可以整合成只操作一次数据库
-        }catch (Exception e){
-            log.error(e.getMessage());
-        }
-        return blog;
-    }
-
-    @RequestMapping(value = "/reWriteBlog/{id}")
-    @ResponseBody
-    public Map<String,Object> reWriteBlog(@PathVariable("id") int id){
+    public Map<String,Object> readBlog(@PathVariable("id") int id){
         Map<String,Object> result = new HashMap<>();
-        String source = null;
-        try {
-            source = blogService.getBlogSourceById(id);
+        try{
+            result = blogService.readBlog(id);
         }catch (Exception e){
-            log.error(e.getMessage());
-        }
-        if(source != null && !"".equals(source)){
-            result.put("source",source);
-            result.put("code",200);
-        }else{
-            result.put("code",500);
+            e.printStackTrace();
+            return null;
         }
         return result;
     }
 
+    @RequestMapping(value = "/readAllBlog",method = RequestMethod.POST)
+    @ResponseBody
+    public List<Map<String,Object>> readAllBlog(@RequestBody Map<String,Object> map){
+        List<Map<String,Object>> result = new ArrayList<>();
+        try{
+            result = blogService.readAllBlogByPage(map);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        return result;
+    }
+
+    @RequestMapping(value = "/readTypeBlog",method = RequestMethod.POST)
+    @ResponseBody
+    public List<Map<String,Object>> readTypeBlog(@RequestBody Map<String,Object> map){
+        List<Map<String,Object>> result = new ArrayList<>();
+        try{
+            result = blogService.readAllBlogByPage(map);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        return result;
+    }
 }

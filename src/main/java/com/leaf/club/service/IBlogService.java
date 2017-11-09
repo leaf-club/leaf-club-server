@@ -3,6 +3,9 @@ package com.leaf.club.service;
 import com.leaf.club.model.Blog;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author LL
  */
@@ -20,26 +23,40 @@ public interface IBlogService {
      * @param blog
      * @return
      */
-    int saveBlog(@Param("blog") Blog blog);
+    Map<String,Object> saveBlog(@Param("blog") Blog blog);
 
     /**
      * 博文的点赞
      * @param id
      * @return
      */
-    Boolean praiseBlog(int id);
+    Map<String,Object> praiseBlog(int id);
 
     /**
      * 博文的阅读量
      * @param id
      * @return
      */
-    Boolean readBlogCount(int id);
+    Map<String,Object> readBlogCount(int id);
 
     /**
-     * 获取博文的内容
+     * 分页读取全部博文
+     * @param map
+     * @return
+     */
+    List<Map<String,Object>> readAllBlogByPage(Map<String,Object> map);
+
+    /**
+     * 分页读取分类博文
+     * @param map
+     * @return
+     */
+    List<Map<String,Object>> readTypeBlogByPage(Map<String,Object> map);
+
+    /**
+     *读取博文
      * @param id
      * @return
      */
-    String getBlogSourceById(int id);
+    Map<String,Object> readBlog(int id);
 }

@@ -2,6 +2,8 @@ package com.leaf.club.service;
 
 import com.leaf.club.model.BlogComments;
 
+import java.util.Map;
+
 /**
  * @author LL
  */
@@ -13,4 +15,12 @@ public interface IBlogCommentsService {
      * @return
      */
     BlogComments getBlogCommentsById(int id);
+
+    /**
+     * 评论博文
+     * @
+     * @return
+     */
+
+    Map<String,Object> commentBlog(Map<String, Object> map);
 }
