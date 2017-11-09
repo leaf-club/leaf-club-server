@@ -16,4 +16,13 @@
         id, comment_blog_id, comment_user_id, comment_time, comment_praise_count,
         comment_content, extra
     </sql>
+
+    <insert id="commentBlog" parameterType="hashmap" useGeneratedKeys="true" keyProperty="id">
+        <selectKey resultType="int" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        INSERT INTO blog_comments(comment_blog_id,comment_user_id,comment_time,comment_content)
+        VALUES (#{commentBlogId},#{commentUserId},#{commentTime},#{commentContent})
+    </insert>
+
 </mapper>

@@ -50,10 +50,6 @@
          #{blogCommentCount},#{blogPraiseCount},#{blogFavoritesCount},#{blogReadCount},#{blogUpdateTime})
     </insert>
 
-    <select id="getBlogSourceById" parameterType="int" resultType="String">
-        SELECT blog_source from blogs WHERE id = #{id}
-    </select>
-
     <update id="readBlogCount" parameterType="int">
         UPDATE blogs SET blog_read_count = blog_read_count + 1 WHERE id = #{id}
     </update>
@@ -61,5 +57,25 @@
     <update id="praiseBlog" parameterType="int">
         UPDATE blogs SET blog_praise_count = blog_praise_count + 1 WHERE id = #{id}
     </update>
+
+    <select id="readAllBlogByPage" parameterType="map" resultType="map">
+        SELECT blog_author_id,blog_create_time, blog_title, blog_excerpt, blog_type,
+        blog_type_name, blog_tag, blog_comment_count, blog_praise_count,
+         blog_favorites_count, blog_read_count, blog_update_time WHERE blog_status = 1
+    </select>
+
+    <select id="readTypeBlogByPage" parameterType="map" resultType="map">
+      SELECT blog_author_id,blog_create_time, blog_title, blog_excerpt, blog_type,
+      blog_type_name, blog_tag, blog_comment_count, blog_praise_count,
+      blog_favorites_count, blog_read_count, blog_update_time WHERE blog_status = 1 AND blog_type = #{blog_type}
+    </select>
+
+    <select id="readBlog" parameterType="int" resultType="map">
+        SELECT blog_author_id,blog_create_time, blog_title, blog_excerpt, blog_content,
+        blog_source, blog_type,
+        blog_type_name, blog_tag, blog_describe, blog_comment_count, blog_praise_count,
+        blog_favorites_count, blog_read_count, blog_update_time,user_nickname,user_img
+        FROM blogs,users WHERE blogs.id=#{id} AND blogs.blog_author_id=users.id
+    </select>
 
 </mapper>
