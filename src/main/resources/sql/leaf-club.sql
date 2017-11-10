@@ -188,5 +188,27 @@ CREATE TABLE `index_show` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- 博文点赞表blog_praise
+DROP TABLE IF EXISTS `blog_praise`;
+CREATE TABLE `user_praise` (
+    `id` INT(10) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(10) NOT NULL COMMENT '关联用户表id',
+    `blog_id` INT(10) NOT NULL COMMENT '关联博客表id',
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`user_id`) REFERENCES users (`id`),
+    FOREIGN KEY (`blog_id`) REFERENCES blogs (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- 作品点赞表work_praise
+DROP TABLE IF EXISTS `work_praise`;
+CREATE TABLE `work_praise` (
+    `id` INT(10) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(10) NOT NULL COMMENT '关联用户表id',
+    `work_id` INT(10) NOT NULL COMMENT '关联作品表id',
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`user_id`) REFERENCES users (`id`),
+    FOREIGN KEY (`work_id`) REFERENCES works (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 SET FOREIGN_KEY_CHECKS=1;
