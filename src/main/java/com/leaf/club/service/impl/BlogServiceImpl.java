@@ -65,7 +65,7 @@ public class BlogServiceImpl implements IBlogService {
             temp.put("msg","请先登录");
             map.put("result",temp);
             return map;
-        }else if(blog.getBlogTypeName() == null){
+        }else if((int) blog.getBlogType() == 0){
             temp.put("code",2);
             temp.put("msg","请选择文章的分类");
             map.put("result",temp);
@@ -81,17 +81,23 @@ public class BlogServiceImpl implements IBlogService {
         temp.put("msg","success");
         map.put("result",temp);
         int id =  blog.getId();
-        map.put("id",id);
+        map.put("data",new HashMap<String,Object>().put("id",id));
         return map;
     }
 
     @Override
-    public Map<String,Object> praiseBlog(int id){
+    public Map<String,Object> praiseBlog(int id ,int userId){
         int praiseResult = 0;
         Map<String,Object> map = new HashMap<>();
         Map<String,Object> temp = new HashMap<>();
+        if(userId == 0 || id == 0){
+            temp.put("code",2);
+            temp.put("msg","消息为空");
+            map.put("result",temp);
+            return map;
+        }
         try {
-            praiseResult = blogDao.praiseBlog(id);
+            praiseResult = blogDao.praiseBlog(id,userId);
         }catch (Exception e) {
             e.printStackTrace();
             temp.put("code",4);
@@ -137,47 +143,78 @@ public class BlogServiceImpl implements IBlogService {
     }
 
     @Override
-    public List<Map<String,Object>> readAllBlogByPage(Map<String, Object> map) {
+    public Map<String,Object> readAllBlogByPage(Map<String, Object> map) {
         List<Map<String,Object>> list = new ArrayList<>();
+        Map<String,Object> result = null;
+        Map<String,Object> temp = null;
         if(map.get("currPage").equals(0)){
-            return null;
+            temp.put("code",500);
+            temp.put("msg","fail");
+            result.put("result",temp);
         }else{
             try{
                 list = blogDao.readAllBlogByPage(map);
+                temp.put("code",200);
+                temp.put("msg","success");
+                result.put("result",temp);
+                result.put("data",list);
+                return result;
             }catch (Exception e){
-                e.printStackTrace();
-                return null;
+                temp.put("code",500);
+                temp.put("msg","fail");
+                result.put("result",temp);
+                return result;
             }
         }
-        return list;
+        return result;
     }
 
     @Override
-    public List<Map<String,Object>> readTypeBlogByPage(Map<String, Object> map) {
+    public Map<String,Object> readTypeBlogByPage(Map<String, Object> map) {
         List<Map<String,Object>> list = new ArrayList<>();
+        Map<String,Object> result = null;
+        Map<String,Object> temp = null;
         if(map.get("currPage").equals(0)||map.get("type").equals(0)){
-            return null;
+            temp.put("code",500);
+            temp.put("msg","fail");
+            result.put("result",temp);
         }else{
             try{
                 list = blogDao.readAllBlogByPage(map);
+                temp.put("code",200);
+                temp.put("msg","success");
+                result.put("result",temp);
+                result.put("data",list);
+                return result;
             }catch (Exception e){
+                temp.put("code",500);
+                temp.put("msg","fail");
+                result.put("result",temp);
                 e.printStackTrace();
-                return null;
+                return result;
             }
         }
-        return list;
+        return result;
     }
 
     @Override
     public Map<String,Object> readBlog(int id){
         Map<String,Object> map = null;
+        Map<String,Object> result = null;
+        Map<String,Object> temp = null;
         try{
             map = blogDao.readBlog(id);
+            result.put("data",map);
+            temp.put("code",200);
+            temp.put("msg","success");
+            result.put("result",temp);
         }catch (Exception e){
             e.printStackTrace();
-            return null;
+            temp.put("code",500);
+            temp.put("msg","fail");
+            result.put("result",temp);
+            return result;
         }
-        return map;
+        return result;
     }
-
 }

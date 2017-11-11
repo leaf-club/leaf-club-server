@@ -30,7 +30,7 @@ public interface IBlogService {
      * @param id
      * @return
      */
-    Map<String,Object> praiseBlog(int id);
+    Map<String,Object> praiseBlog(int id,int userId);
 
     /**
      * 博文的阅读量
@@ -44,14 +44,14 @@ public interface IBlogService {
      * @param map
      * @return
      */
-    List<Map<String,Object>> readAllBlogByPage(Map<String,Object> map);
+    Map<String,Object> readAllBlogByPage(Map<String,Object> map);
 
     /**
      * 分页读取分类博文
      * @param map
      * @return
      */
-    List<Map<String,Object>> readTypeBlogByPage(Map<String,Object> map);
+    Map<String,Object> readTypeBlogByPage(Map<String,Object> map);
 
     /**
      *读取博文

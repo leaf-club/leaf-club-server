@@ -27,10 +27,10 @@ public interface IBlogDao {
 
     /**
      * 博文点赞
-     * @param id
+     * @param id,userId
      * @return
      */
-    int praiseBlog(int id);
+    int praiseBlog(int id,int userId);
 
     /**
      * 博文阅读量

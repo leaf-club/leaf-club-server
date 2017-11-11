@@ -29,16 +29,30 @@ public class BlogController {
     @ResponseBody
     public Map<String, Object> saveBlog(@RequestBody Map<String,Object> map){
         Blog blog = new Blog();
-        blog.setBlogAuthorId((Integer)map.get("userId"));
-        blog.setBlogContent((String)map.get("htmlCode"));
-        blog.setBlogExcerpt((String)map.get("abstract"));
-        blog.setBlogSource((String)map.get("mdCode"));
-        blog.setBlogStatus((Integer)map.get("status"));
-        blog.setBlogTag((String)map.get("tag"));
-        Map<String,Object> type = (Map)map.get("type");
-        blog.setBlogType((Integer) type.get("id"));
-        blog.setBlogTypeName((String)type.get("name"));
-        blog.setBlogTitle((String)map.get("title"));
+        if(map.get("userId") != null){
+            blog.setBlogAuthorId((Integer)map.get("userId"));
+        }
+        if(map.get("htmlCode") != null) {
+            blog.setBlogContent((String) map.get("htmlCode"));
+        }
+        if(map.get("abstract") != null){
+            blog.setBlogExcerpt((String)map.get("abstract"));
+        }
+        if(map.get("mdCode") != null) {
+            blog.setBlogSource((String) map.get("mdCode"));
+        }
+        if(map.get("status") != null) {
+            blog.setBlogStatus((Integer) map.get("status"));
+        }
+        if(map.get("tag") != null) {
+            blog.setBlogTag((String) map.get("tag"));
+        }
+        if(map.get("id") != null) {
+            blog.setBlogType((Integer) map.get("id"));
+        }
+        if(map.get("title") != null) {
+            blog.setBlogTitle((String) map.get("title"));
+        }
         blog.setBlogCreateTime(System.currentTimeMillis());
         log.info("保存文章的前台数据：",blog);
         Map<String,Object> result = new HashMap<>(4);
@@ -68,10 +82,18 @@ public class BlogController {
 
     @RequestMapping(value = "/praiseBlog/{id}")
     @ResponseBody
-    public Map<String,Object> praiseBlog(@PathVariable("id") int id){
+    public Map<String,Object> praiseBlog(@RequestBody Map<String,Object> map){
+        int id = 0;
+        int userId = 0;
+        if(map.get("id") != null){
+            id = (int)map.get("id");
+        }
+        if(map.get("userId") != null){
+            userId = (int)map.get("userId");
+        }
         Map<String,Object> result = new HashMap<>();
         try {
-            result = blogService.praiseBlog(id);
+            result = blogService.praiseBlog(id,userId);
         }catch (Exception e){
             log.error(e.getMessage());
         }
@@ -86,33 +108,33 @@ public class BlogController {
             result = blogService.readBlog(id);
         }catch (Exception e){
             e.printStackTrace();
-            return null;
+            return result;
         }
         return result;
     }
 
     @RequestMapping(value = "/readAllBlog",method = RequestMethod.POST)
     @ResponseBody
-    public List<Map<String,Object>> readAllBlog(@RequestBody Map<String,Object> map){
-        List<Map<String,Object>> result = new ArrayList<>();
+    public Map<String,Object> readAllBlog(@RequestBody Map<String,Object> map){
+        Map<String,Object> result = new HashMap<>();
         try{
             result = blogService.readAllBlogByPage(map);
         }catch (Exception e){
             e.printStackTrace();
-            return null;
+            return result;
         }
         return result;
     }
 
     @RequestMapping(value = "/readTypeBlog",method = RequestMethod.POST)
     @ResponseBody
-    public List<Map<String,Object>> readTypeBlog(@RequestBody Map<String,Object> map){
-        List<Map<String,Object>> result = new ArrayList<>();
+    public Map<String,Object> readTypeBlog(@RequestBody Map<String,Object> map){
+        Map<String,Object> result = new HashMap<>();
         try{
             result = blogService.readAllBlogByPage(map);
         }catch (Exception e){
             e.printStackTrace();
-            return null;
+            return result;
         }
         return result;
     }
