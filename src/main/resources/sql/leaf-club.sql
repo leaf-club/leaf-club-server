@@ -190,7 +190,7 @@ CREATE TABLE `index_show` (
 
 -- 博文点赞表blog_praise
 DROP TABLE IF EXISTS `blog_praise`;
-CREATE TABLE `user_praise` (
+CREATE TABLE `blog_praise` (
     `id` INT(10) NOT NULL AUTO_INCREMENT,
     `user_id` INT(10) NOT NULL COMMENT '关联用户表id',
     `blog_id` INT(10) NOT NULL COMMENT '关联博客表id',

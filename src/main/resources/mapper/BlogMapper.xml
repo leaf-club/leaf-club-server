@@ -50,9 +50,17 @@
          #{blogCommentCount},#{blogPraiseCount},#{blogFavoritesCount},#{blogReadCount},#{blogUpdateTime})
     </insert>
 
+    <update id="reSaveBlog" parameterType="com.leaf.club.model.Blog">
+        UPDATE blogs SET blog_title = #{blogTitle}, blog_excerpt = #{blogExcerpt}, blog_content = #{blogContent}
+        ,blog_source = #{blogSource}, blog_type = #{blogType},
+        blog_type_name = #{blogTypeName}, blog_tag = #{blogTag}, blog_describe = #{blogDescribe},
+        blog_status = #{blogStatus}, blog_update_time = #{blogUpdateTime} WHERE id = #{id}
+    </update>
+
     <update id="readBlogCount" parameterType="int">
         UPDATE blogs SET blog_read_count = blog_read_count + 1 WHERE id = #{id}
     </update>
+    
 
     <update id="praiseBlog" parameterType="int">
         UPDATE blogs SET blog_praise_count = blog_praise_count + 1 WHERE id = #{id}

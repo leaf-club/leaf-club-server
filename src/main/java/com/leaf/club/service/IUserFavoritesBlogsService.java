@@ -2,6 +2,8 @@ package com.leaf.club.service;
 
 import com.leaf.club.model.UserFavoritesBlogs;
 
+import java.util.Map;
+
 /**
  * @author LL
  */
@@ -13,4 +15,7 @@ public interface IUserFavoritesBlogsService {
      * @return
      */
     UserFavoritesBlogs getUserFavoritesBlogsById(int id);
+
+    Map<String,Object> favoritesBlog(Map<String,Object> map);
+
 }

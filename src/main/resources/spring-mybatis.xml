@@ -45,7 +45,6 @@
         <property name="dataSource" ref="dataSource"/>
         <!--自动扫描mapper.xml文件-->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
-
     </bean>
 
     <!--DAO接口所在的包名，spring会自动查找其下的类-->
