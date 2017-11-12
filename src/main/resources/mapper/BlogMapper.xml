@@ -42,17 +42,17 @@
         </selectKey>
         INSERT INTO blogs(blog_author_id,blog_create_time, blog_title, blog_excerpt, blog_content,
         blog_source, blog_file_url, blog_type,
-        blog_type_name, blog_tag, blog_describe, blog_status, blog_comment_count, blog_praise_count,
+        blog_type_name, blog_tag, blog_status, blog_comment_count, blog_praise_count,
         blog_favorites_count, blog_read_count, blog_update_time)
         VALUES
          (#{blogAuthorId},#{blogCreateTime},#{blogTitle},#{blogExcerpt},#{blogContent},
-	     #{blogSource},#{blogFileUrl},#{blogType},#{blogTypeName},#{blogTag},#{blogDescribe},#{blogStatus},
+	     #{blogSource},#{blogFileUrl},#{blogType},#{blogTypeName},#{blogTag},#{blogStatus},
          #{blogCommentCount},#{blogPraiseCount},#{blogFavoritesCount},#{blogReadCount},#{blogUpdateTime})
     </insert>
 
     <update id="reSaveBlog" parameterType="com.leaf.club.model.Blog">
-        UPDATE blogs SET blog_title = #{blogTitle}, blog_excerpt = #{blogExcerpt}, blog_content = #{blogContent}
-        ,blog_source = #{blogSource}, blog_type = #{blogType},
+        UPDATE blogs SET blog_title = #{blogTitle}, blog_content = #{blogContent}
+        ,blog_source = #{blogSource}, blog_type = #{blogType}, blog_tag= ,#{blogTag},
         blog_type_name = #{blogTypeName}, blog_tag = #{blogTag}, blog_describe = #{blogDescribe},
         blog_status = #{blogStatus}, blog_update_time = #{blogUpdateTime} WHERE id = #{id}
     </update>
@@ -85,5 +85,19 @@
         blog_favorites_count, blog_read_count, blog_update_time,user_nickname,user_img
         FROM blogs,users WHERE blogs.id=#{id} AND blogs.blog_author_id=users.id
     </select>
+
+    <select id="readAll" parameterType="int" resultType="map">
+         SELECT id,blog_author_id,blog_create_time, blog_title, blog_excerpt, blog_type,
+        blog_type_name, blog_tag, blog_comment_count, blog_praise_count,
+         blog_favorites_count, blog_read_count, blog_update_time FROM blogs WHERE blog_status = 1 ORDER BY id DESC limit #{count}
+    </select>
+
+
+    <select id="readAllByType" parameterType="int" resultType="map">
+        SELECT id,blog_author_id,blog_create_time, blog_title, blog_excerpt, blog_type,
+        blog_type_name, blog_tag, blog_comment_count, blog_praise_count,
+        blog_favorites_count, blog_read_count, blog_update_time FROM blogs WHERE blog_status = 1 AND blog_type = #{typeId} ORDER BY id DESC limit #{count}
+    </select>
+
 
 </mapper>
