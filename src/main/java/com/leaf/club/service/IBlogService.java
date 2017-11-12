@@ -59,4 +59,9 @@ public interface IBlogService {
      * @return
      */
     Map<String,Object> readBlog(int id);
+
+    Map<String,Object> readAll(int count);
+
+    Map<String,Object> readAllByType(int count,int typeId);
+
 }

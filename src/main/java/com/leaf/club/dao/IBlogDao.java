@@ -55,8 +55,11 @@ public interface IBlogDao {
      */
     List<Map<String,Object>> readTypeBlogByPage(Map<String,Object> map);
 
+    List<Map<String,Object>> readAll(int count);
+
     Map<String,Object> readBlog(int id);
 
+    List<Map<String,Object>> readAllByType(Map<String,Object> selectByType);
 
     /**
      * 收藏文章

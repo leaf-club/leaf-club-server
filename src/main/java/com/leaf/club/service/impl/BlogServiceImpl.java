@@ -74,10 +74,13 @@ public class BlogServiceImpl implements IBlogService {
         switch (blog.getBlogType()) {
             case 1:
                 blog.setBlogTypeName("前端");
+                break;
             case 2:
                 blog.setBlogTypeName("后台");
+                break;
             default:
                 blog.setBlogTypeName("ios");
+                break;
         }
         int saveBlog;
         if (blog.getId() == -1) {
@@ -96,7 +99,9 @@ public class BlogServiceImpl implements IBlogService {
         temp.put("msg", "success");
         map.put("result", temp);
         int id = blog.getId();
-        map.put("data", new HashMap<String, Object>().put("id", id));
+        Map<String,Object> returnId = new HashMap<>();
+        returnId.put("id",id);
+        map.put("data", id);
         return map;
     }
 
@@ -231,5 +236,50 @@ public class BlogServiceImpl implements IBlogService {
             return result;
         }
         return result;
+    }
+
+    @Override
+    public Map<String,Object> readAll(int count){
+        List<Map<String, Object>> list = new ArrayList<>();
+        Map<String, Object> result = new HashMap<>();
+        Map<String, Object> temp = new HashMap<>();
+        try {
+            list = blogDao.readAll(count);
+            temp.put("code", 200);
+            temp.put("msg", "success");
+            result.put("result", temp);
+            result.put("data", list);
+            return result;
+        } catch (Exception e) {
+            temp.put("code", 500);
+            temp.put("msg", "fail");
+            result.put("result", temp);
+            e.printStackTrace();
+            return result;
+        }
+    }
+
+    @Override
+    public Map<String,Object> readAllByType(int count ,int typeId){
+        List<Map<String, Object>> list = new ArrayList<>();
+        Map<String, Object> result = new HashMap<>();
+        Map<String, Object> temp = new HashMap<>();
+        try {
+            Map<String,Object> selectByType = new HashMap<>();
+            selectByType.put("count",count);
+            selectByType.put("typeId",typeId);
+            list = blogDao.readAllByType(selectByType);
+            temp.put("code", 200);
+            temp.put("msg", "success");
+            result.put("result", temp);
+            result.put("data", list);
+            return result;
+        } catch (Exception e) {
+            temp.put("code", 500);
+            temp.put("msg", "fail");
+            result.put("result", temp);
+            e.printStackTrace();
+            return result;
+        }
     }
 }

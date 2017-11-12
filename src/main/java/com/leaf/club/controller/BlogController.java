@@ -145,4 +145,17 @@ public class BlogController {
         }
         return result;
     }
+
+    @RequestMapping(value = "readAllBlog/{count}/{typeId}",method = RequestMethod.GET)
+    @ResponseBody
+    public  Map<String,Object> readAllBlog(@PathVariable("count") int count,@PathVariable("typeId") int typeId){
+        Map<String,Object> result = new HashMap<>();
+        try{
+            result = blogService.readAllByType(count,typeId);
+        }catch (Exception e){
+            e.printStackTrace();
+            return result;
+        }
+        return result;
+    }
 }
