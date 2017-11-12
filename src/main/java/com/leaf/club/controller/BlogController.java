@@ -44,7 +44,7 @@ public class BlogController {
         if(map.get("mdCode") != null) {
             blog.setBlogSource((String) map.get("mdCode"));
         }
-        if(map.get("status") !=  null) {
+        if(map.get("status") != null) {
             blog.setBlogStatus((Integer) map.get("status"));
         }
         if(map.get("tag") != null) {
