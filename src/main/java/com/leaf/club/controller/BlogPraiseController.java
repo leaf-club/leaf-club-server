@@ -1,6 +1,7 @@
 package com.leaf.club.controller;
 
-
+import com.leaf.club.dao.IBlogPraiseDao;
+import com.leaf.club.service.IBlogPraiseService;
 import com.leaf.club.service.IUserFavoritesBlogsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,26 +15,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.HashMap;
 import java.util.Map;
 
-
-
 @Controller
-@RequestMapping("/favoritesBlog")
-public class UserFavoritesBlogsController {
+@RequestMapping("/praiseBlog")
+public class BlogPraiseController {
 
-    private static Logger log = LoggerFactory.getLogger(BlogController.class);
+    private static Logger log = LoggerFactory.getLogger(BlogPraiseController.class);
     @Autowired()
-    private IUserFavoritesBlogsService userFavoritesBlogsService;
-    @RequestMapping(value = "favorites",method = RequestMethod.POST)
+//    private IUserFavoritesBlogsService userFavoritesBlogsService;
+    private IBlogPraiseService blogPraiseService;
+    @RequestMapping(value = "praise",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> praiseBlog(@RequestBody Map<String,Object> map){
+    public Map<String,Object> favoritesBlog(@RequestBody Map<String,Object> map){
         Map<String,Object> temp = new HashMap<>();
         Map<String,Object> result = new HashMap<>();
         try {
-            result = userFavoritesBlogsService.favoritesBlog(map);
+            result = blogPraiseService.praiseBlog(map);
         }catch (Exception e){
             log.error(e.getMessage());
         }
         return result;
     }
-
 }

@@ -25,6 +25,8 @@ public interface IBlogDao {
      */
     int saveBlog( Blog blog);
 
+    int reSaveBlog( Blog blog);
+
     /**
      * 博文点赞
      * @param id,userId
@@ -55,4 +57,12 @@ public interface IBlogDao {
 
     Map<String,Object> readBlog(int id);
 
+
+    /**
+     * 收藏文章
+     * @param id
+     * @param userId
+     * @return
+     */
+    int favoritesBlog(int id,int userId);
 }

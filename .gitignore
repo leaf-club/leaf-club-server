@@ -24,7 +24,7 @@ hs_err_pid*
 #ide self
 *.iml
 .idea
-src/main/resources/jdbc.properties
+jdbc.properties
 logs
 target
 

@@ -29,6 +29,9 @@ public class BlogController {
     @ResponseBody
     public Map<String, Object> saveBlog(@RequestBody Map<String,Object> map){
         Blog blog = new Blog();
+        if(map.get("id") != null){
+            blog.setId((Integer)map.get("id"));
+        }
         if(map.get("userId") != null){
             blog.setBlogAuthorId((Integer)map.get("userId"));
         }
@@ -47,13 +50,17 @@ public class BlogController {
         if(map.get("tag") != null) {
             blog.setBlogTag((String) map.get("tag"));
         }
-        if(map.get("id") != null) {
-            blog.setBlogType((Integer) map.get("id"));
+        if(map.get("typeId") != null) {
+            blog.setBlogType((Integer) map.get("typeId"));
         }
         if(map.get("title") != null) {
             blog.setBlogTitle((String) map.get("title"));
         }
-        blog.setBlogCreateTime(System.currentTimeMillis());
+        if((int)map.get("id") == -1) {
+            blog.setBlogCreateTime(System.currentTimeMillis());
+        }else{
+            blog.setBlogUpdateTime(System.currentTimeMillis());
+        }
         log.info("保存文章的前台数据：",blog);
         Map<String,Object> result = new HashMap<>(4);
         try {
@@ -80,7 +87,7 @@ public class BlogController {
         return blog;
     }
 
-    @RequestMapping(value = "/praiseBlog/{id}")
+    @RequestMapping(value = "/praiseBlog",method = RequestMethod.POST)
     @ResponseBody
     public Map<String,Object> praiseBlog(@RequestBody Map<String,Object> map){
         int id = 0;

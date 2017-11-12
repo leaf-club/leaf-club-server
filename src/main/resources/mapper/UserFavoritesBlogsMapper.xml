@@ -12,4 +12,23 @@
 <sql id="BaseColumns">
     id, user_id, favorite_blog_id, extra
 </sql>
+
+    <select id="favoritesBlogSelect" parameterType="map" resultType="Integer">
+        SELECT id FROM user_favorites_blogs WHERE favorite_blog_id =#{id} AND user_id = #{userId}
+    </select>
+    <insert id="favoritesBlogInsert" useGeneratedKeys="true" keyColumn="id" parameterType="map">
+        INSERT user_favorites_blogs(favorite_blog_id,user_id) VALUES (#{id},#{userId})
+    </insert>
+
+    <update id="favoritesBlogUpdate" parameterType="int">
+        UPDATE blogs SET blog_favorites_count = blog_favorites_count + 1 WHERE id = #{id}
+    </update>
+
+    <delete id="favoritesBlogDelete" parameterType="map">
+        DELETE FROM user_favorites_blogs WHERE favorite_blog_id =#{id} AND user_id = #{userId}
+    </delete>
+
+    <update id="favoritesBlogUpdateMinus" parameterType="int">
+        UPDATE blogs SET blog_favorites_count = blog_favorites_count-1 WHERE id = #{id}
+    </update>
 </mapper>
