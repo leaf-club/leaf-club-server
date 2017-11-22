@@ -40,12 +40,12 @@
         <selectKey resultType="int" order="AFTER" keyProperty="id">
             SELECT LAST_INSERT_ID() AS id
         </selectKey>
-        INSERT INTO blogs(blog_author_id,blog_create_time, blog_title, blog_excerpt, blog_content,
+        INSERT INTO blogs(blog_author_id,blog_create_time, blog_title, blog_describe, blog_content,
         blog_source, blog_file_url, blog_type,
         blog_type_name, blog_tag, blog_status, blog_comment_count, blog_praise_count,
         blog_favorites_count, blog_read_count, blog_update_time)
         VALUES
-         (#{blogAuthorId},#{blogCreateTime},#{blogTitle},#{blogExcerpt},#{blogContent},
+         (#{blogAuthorId},#{blogCreateTime},#{blogTitle},#{blogDescribe},#{blogContent},
 	     #{blogSource},#{blogFileUrl},#{blogType},#{blogTypeName},#{blogTag},#{blogStatus},
          #{blogCommentCount},#{blogPraiseCount},#{blogFavoritesCount},#{blogReadCount},#{blogUpdateTime})
     </insert>
@@ -67,19 +67,19 @@
     </update>
 
     <select id="readAllBlogByPage" parameterType="map" resultType="map">
-        SELECT blog_author_id,blog_create_time, blog_title, blog_excerpt, blog_type,
+        SELECT blog_author_id,blog_create_time, blog_title, blog_describe, blog_type,
         blog_type_name, blog_tag, blog_comment_count, blog_praise_count,
          blog_favorites_count, blog_read_count, blog_update_time WHERE blog_status = 1
     </select>
 
     <select id="readTypeBlogByPage" parameterType="map" resultType="map">
-      SELECT blog_author_id,blog_create_time, blog_title, blog_excerpt, blog_type,
+      SELECT blog_author_id,blog_create_time, blog_title, blog_describe, blog_type,
       blog_type_name, blog_tag, blog_comment_count, blog_praise_count,
       blog_favorites_count, blog_read_count, blog_update_time WHERE blog_status = 1 AND blog_type = #{blog_type}
     </select>
 
     <select id="readBlog" parameterType="int" resultType="map">
-        SELECT blog_author_id,blog_create_time, blog_title, blog_excerpt, blog_content,
+        SELECT blog_author_id,blog_create_time, blog_title, blog_describe, blog_content,
         blog_source, blog_type,
         blog_type_name, blog_tag, blog_describe, blog_comment_count, blog_praise_count,
         blog_favorites_count, blog_read_count, blog_update_time,user_nickname,user_img
@@ -87,14 +87,14 @@
     </select>
 
     <select id="readAll" parameterType="int" resultType="map">
-         SELECT id,blog_author_id,blog_create_time, blog_title, blog_excerpt, blog_type,
+         SELECT id,blog_author_id,blog_create_time, blog_title, blog_describe, blog_type,
         blog_type_name, blog_tag, blog_comment_count, blog_praise_count,
          blog_favorites_count, blog_read_count, blog_update_time FROM blogs WHERE blog_status = 1 ORDER BY id DESC limit #{count}
     </select>
 
 
     <select id="readAllByType" parameterType="int" resultType="map">
-        SELECT id,blog_author_id,blog_create_time, blog_title, blog_excerpt, blog_type,
+        SELECT id,blog_author_id,blog_create_time, blog_title, blog_describe, blog_type,
         blog_type_name, blog_tag, blog_comment_count, blog_praise_count,
         blog_favorites_count, blog_read_count, blog_update_time FROM blogs WHERE blog_status = 1 AND blog_type = #{typeId} ORDER BY id DESC limit #{count}
     </select>

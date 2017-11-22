@@ -17,7 +17,7 @@
         comment_content, extra
     </sql>
 
-    <insert id="commentBlog" parameterType="hashmap" useGeneratedKeys="true" keyProperty="id">
+    <insert id="commentBlog" parameterType="map" useGeneratedKeys="true" keyProperty="id">
         <selectKey resultType="int" order="AFTER" keyProperty="id">
             SELECT LAST_INSERT_ID() AS id
         </selectKey>

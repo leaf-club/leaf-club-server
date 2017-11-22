@@ -67,7 +67,7 @@ public class BlogServiceImpl implements IBlogService {
             return map;
         } else if (blog.getBlogType() == 0) {
             temp.put("code", 2);
-            temp.put("msg", "请选择文章的分类");
+            temp.put("msg", "请选择博文的分类");
             map.put("result", temp);
             return map;
         }
@@ -101,7 +101,7 @@ public class BlogServiceImpl implements IBlogService {
         int id = blog.getId();
         Map<String,Object> returnId = new HashMap<>();
         returnId.put("id",id);
-        map.put("data", id);
+        map.put("data", returnId);
         return map;
     }
 
@@ -147,7 +147,7 @@ public class BlogServiceImpl implements IBlogService {
         } catch (Exception e) {
             e.printStackTrace();
             temp.put("code", 4);
-            temp.put("msg", "数据库修改异常");
+            temp.put("msg", "数据库异常");
             map.put("result", temp);
             return map;
         }
