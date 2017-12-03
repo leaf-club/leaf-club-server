@@ -6,8 +6,8 @@
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="work_author_id" jdbcType="INTEGER" property="workAuthorId"/>
         <result column="work_create_time" jdbcType="BIGINT" property="workCreateTime"/>
-        <result column="work_url" jdbcType="VARCHAR" property="workCreateTime"/>
-        <result column="work_title" jdbcType="VARCHAR" property="workTile"/>
+        <result column="work_url" jdbcType="VARCHAR" property="workUrl"/>
+        <result column="work_title" jdbcType="VARCHAR" property="workTitle"/>
         <result column="work_describe" jdbcType="VARCHAR" property="workDescribe"/>
         <result column="work_type" jdbcType="INTEGER" property="workType"/>
         <result column="work_type_name" jdbcType="VARCHAR" property="workTypeName"/>
@@ -15,7 +15,7 @@
         <result column="work_status" jdbcType="TINYINT" property="workStatus"/>
         <result column="work_comment_count" jdbcType="INTEGER" property="workCommentCount"/>
         <result column="work_praise_count" jdbcType="INTEGER" property="workPraiseCount"/>
-        <result column="work_favorite_count" jdbcType="INTEGER" property="workFavoritesCount"/>
+        <result column="work_favorite_count" jdbcType="INTEGER" property="workFavoriteCount"/>
         <result column="work_read_count" jdbcType="INTEGER" property="workReadCount"/>
         <result column="work_update_time" jdbcType="BIGINT" property="workUpdateTime"/>
         <result column="extra" jdbcType="VARCHAR" property="extra"/>
@@ -26,4 +26,62 @@
         work_type_name, work_tag, work_status, work_comment_count, work_praise_count,
         work_favorite_count,work_read_count, work_update_time, extra
     </sql>
+
+    <select id="getWorkById" resultMap="BaseResultMap">
+        SELECT <include refid="BaseColumns"/> FROM works where id = #{id}
+    </select>
+
+    <select id="getWork">
+        SELECT work_author_id,work_create_time, work_title, work_url, work_type,
+        work_type_name, work_tag, work_describe, work_comment_count, work_praise_count,
+        work_favorites_count, work_read_count, work_update_time,user_nickname,user_img
+        FROM works,users WHERE works.id=#{id} AND works.work_author_id=users.id
+    </select>
+
+    <insert id="saveWork" useGeneratedKeys="true" keyProperty="id">
+        <selectKey resultType="int" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        INSERT  INTO works(work_author_id, work_create_time, work_url, work_title, work_describe, work_type,
+        work_type_name, work_tag, work_status, work_comment_count, work_praise_count,
+        work_favorite_count,work_read_count, work_update_time)
+        VALUES (#{workAuthorId},#{workCreateTime},#{workUrl},#{workTitle},#{workDescribe},
+        #{workType},#{workTypeName},#{workTag},#{workStatus},
+        #{workCommentCount},#{workPraiseCount},#{workFavoriteCount},#{workReadCount},#{workUpdateTime})
+    </insert>
+
+
+    <update id="reSaveWork" parameterType="com.leaf.club.model.Work">
+        UPDATE works SET work_title = #{workTitle}, work_type = #{workType}, work_tag= ,#{workTag},
+        work_type_name = #{workTypeName}, work_tag = #{workTag}, work_describe = #{workDescribe},
+        work_status = #{workStatus}, work_update_time = #{workUpdateTime} WHERE id = #{id}
+    </update>
+
+    <update id="readWorkCount" parameterType="int">
+        UPDATE works SET work_read_count = work_read_count + 1 WHERE id = #{id}
+    </update>
+
+    <select id="readAll" parameterType="int" resultType="map">
+        SELECT id,work_author_id, work_create_time, work_url, work_title, work_describe, work_type,
+        work_type_name, work_tag, work_status, work_comment_count, work_praise_count,
+        work_favorite_count,work_read_count, work_update_time FROM works WHERE work_status = 1 ORDER BY id DESC limit #{count}
+    </select>
+
+    <select id="readAllByType" parameterType="int" resultType="map">
+        SELECT id,work_author_id, work_create_time, work_url, work_title, work_describe, work_type,
+        work_type_name, work_tag, work_status, work_comment_count, work_praise_count,
+        work_favorite_count,work_read_count, work_update_time FROM works WHERE work_type = #{typeId} AND
+        work_status = 1 ORDER BY id DESC limit #{count}
+    </select>
+
+    <select id="readWork" parameterType="int" resultType="map">
+        SELECT work_author_id, work_create_time, work_url, work_title, work_describe, work_type,
+        work_type_name, work_tag, work_status, work_comment_count, work_praise_count,
+        work_favorite_count,work_read_count, work_update_time,user_nickname,user_img FROM works,users
+        WHERE works.id = #{id} AND users.id = works.work_author_id
+    </select>
+
+    <update id="praiseWork" parameterType="int">
+        UPDATE works SET work_praise_count = work_praise_count + 1 WHERE id = #{id}
+    </update>
 </mapper>

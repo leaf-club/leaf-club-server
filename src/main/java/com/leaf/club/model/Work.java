@@ -6,6 +6,7 @@ package com.leaf.club.model;
 
 public class Work {
     private int id;
+    private int workAuthorId;
     private long workCreateTime;
     private String workUrl;
     private String workTitle;
@@ -140,4 +141,18 @@ public class Work {
     public void setExtra(String extra) {
         this.extra = extra;
     }
+
+    public void setWorkCreateTime(long workCreateTime) {
+        this.workCreateTime = workCreateTime;
+    }
+
+    public int getWorkAuthorId() {
+
+        return workAuthorId;
+    }
+
+    public void setWorkAuthorId(int workAuthorId) {
+        this.workAuthorId = workAuthorId;
+    }
+
 }
